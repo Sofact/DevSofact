@@ -76,6 +76,20 @@ public class Generadores {
 		return shaseado;		
 	}
 	
+	public String generadorConsecutivoPosPrefijo(String tipo) {
+		
+		String consecutivo = String.valueOf((Integer.parseInt(gd.getLastFactura(tipo))+1));
+		
+		while (consecutivo.length()<4) {
+			consecutivo = "0"+consecutivo;
+		}
+		
+		return gd.getResolucion("P").getRefPrefijo()+ consecutivo;
+		
+		
+	}
+
+	
 	public String generadorInvoiceLineDescription (int pvm_id) {
 		
 		

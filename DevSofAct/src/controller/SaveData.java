@@ -93,7 +93,7 @@ public class SaveData {
 		factura.setFacFechaFactura(timeStamp);
 		factura.setFacIva(Double.parseDouble(fact.getIva()));
 		factura.setFacNumFactura(gen.generadorConsecutivoPos(tipo));
-		factura.setFacNumOriginal(resol.getRefPrefijo()+String.valueOf(Integer.parseInt(factura.getFacNumFactura().trim(), 16 )));
+		factura.setFacNumOriginal(gen.generadorConsecutivoPosPrefijo(tipo));
 		factura.setFacSubTotal(Double.parseDouble(fact.getSubtotal()));
 		factura.setFacTotal(Double.parseDouble(fact.getTotal()));
 		factura.setFechaCreacion(date);
