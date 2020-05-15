@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-abr-2018 8:40:56 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="model.Producto" table="PRODUCTO">
+        <id name="proId" type="java.lang.Integer">
+            <column name="PROID" />
+            <generator class="assigned" />
+        </id>
+        <property name="fechaCreacion" type="java.sql.Timestamp">
+            <column name="FECHACREACION" />
+        </property>
+        <property name="fechaModifica" type="java.sql.Timestamp">
+            <column name="FECHAMODIFICA" />
+        </property>
+        <property name="proDescripcion" type="java.lang.String">
+            <column name="PRODESCRIPCION" />
+        </property>
+        <property name="proEstado" type="java.lang.String">
+            <column name="PROESTADO" />
+        </property>
+        <property name="proReferencia" type="java.lang.String">
+            <column name="PROREFERENCIA" />
+        </property>
+        <property name="uepId" type="java.lang.Integer">
+            <column name="UEPID" />
+        </property>
+        <property name="userModifica" type="java.lang.Integer">
+            <column name="USERMODIFICA" />
+        </property>
+        <many-to-one name="marca" class="model.Marca" fetch="join">
+            <column name="MARCA" />
+        </many-to-one>
+        <many-to-one name="tipoProducto" class="model.TipoProducto" fetch="join">
+            <column name="TIPOPRODUCTO" />
+        </many-to-one>
+        <list name="productoValorMedidas" inverse="false" table="PRODUCTOVALORMEDIDA" lazy="true">
+            <key>
+                <column name="PROID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="model.ProductoValorMedida" />
+        </list>
+    </class>
+</hibernate-mapping>

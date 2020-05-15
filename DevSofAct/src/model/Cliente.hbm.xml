@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-sep-2018 12:36:08 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="model.Cliente" table="CLIENTE">
+        <id name="cliId" type="int">
+            <column name="CLIID" />
+            <generator class="assigned" />
+        </id>
+        <property name="cliApellidos" type="java.lang.String">
+            <column name="CLIAPELLIDOS" />
+        </property>
+        <property name="cliCelular" type="java.lang.String">
+            <column name="CLICELULAR" />
+        </property>
+        <property name="cliDireccion" type="java.lang.String">
+            <column name="CLIDIRECCION" />
+        </property>
+        <property name="cliEmail" type="java.lang.String">
+            <column name="CLIEMAIL" />
+        </property>
+        <property name="cliNombre" type="java.lang.String">
+            <column name="CLINOMBRE" />
+        </property>
+        <property name="cliNumIdent" type="java.lang.String">
+            <column name="CLINUMIDENT" />
+        </property>
+        <property name="cliSegundoNombre" type="java.lang.String">
+            <column name="CLISEGUNDONOMBRE" />
+        </property>
+        <property name="cliTelefono" type="java.lang.String">
+            <column name="CLITELEFONO" />
+        </property>
+        <property name="cliTipoIdent" type="int">
+            <column name="CLITIPOIDENT" />
+        </property>
+        <property name="fechaCreacion" type="java.util.Date">
+            <column name="FECHACREACION" />
+        </property>
+        <property name="fechaModifica" type="java.util.Date">
+            <column name="FECHAMODIFICA" />
+        </property>
+        <property name="muniId" type="int">
+            <column name="MUNIID" />
+        </property>
+        <property name="tpcId" type="int">
+            <column name="TPCID" />
+        </property>
+        <property name="uepId" type="int">
+            <column name="UEPID" />
+        </property>
+        <property name="userModifica" type="int">
+            <column name="USERMODIFICA" />
+        </property>
+    </class>
+</hibernate-mapping>

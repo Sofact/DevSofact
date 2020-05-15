@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-abr-2018 8:40:56 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="model.Empresa" table="EMPRESA">
+        <id name="empId" type="int">
+            <column name="EMPID" />
+            <generator class="assigned" />
+        </id>
+        <property name="empDescripcion" type="java.lang.String">
+            <column name="EMPDESCRIPCION" />
+        </property>
+        <property name="empNick" type="java.lang.String">
+            <column name="EMPNICK" />
+        </property>
+        <property name="empTelefono" type="java.lang.String">
+            <column name="EMPTELEFONO" />
+        </property>
+        <property name="empDireccion" type="java.lang.String">
+            <column name="EMPDIRECCION" />
+        </property>
+        <property name="empEmail" type="java.lang.String">
+            <column name="EMPEMAIL" />
+        </property>
+        <property name="uepId" type="int">
+            <column name="UEPID" />
+        </property>
+        <property name="fechaCreacion" type="java.util.Date">
+            <column name="FECHACREACION" />
+        </property>
+        <property name="userModifica" type="java.lang.Integer">
+            <column name="USERMODIFICA" />
+        </property>
+        <property name="fechaModificacion" type="java.util.Date">
+            <column name="FECHAMODIFICACION" />
+        </property>
+    </class>
+</hibernate-mapping>

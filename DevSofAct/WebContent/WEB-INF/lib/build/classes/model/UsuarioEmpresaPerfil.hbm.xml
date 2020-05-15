@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-abr-2018 8:40:56 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="model.UsuarioEmpresaPerfil" table="USUARIOEMPRESAPERFIL">
+        <id name="empId" type="int">
+            <column name="EMPID" />
+            <generator class="assigned" />
+        </id>
+        <property name="userCreacion" type="int">
+            <column name="USERCREACION" />
+        </property>
+        <property name="uepId" type="int">
+            <column name="UEPID" />
+        </property>
+        <property name="usuId" type="int">
+            <column name="USUID" />
+        </property>
+        <property name="perId" type="int">
+            <column name="PERID" />
+        </property>
+        <property name="estado" type="char">
+            <column name="ESTADO" />
+        </property>
+        <property name="fechaCreacion" type="java.util.Date">
+            <column name="FECHACREACION" />
+        </property>
+        <property name="userModifica" type="java.lang.Integer">
+            <column name="USERMODIFICA" />
+        </property>
+        <property name="fechaModifica" type="java.util.Date">
+            <column name="FECHAMODIFICA" />
+        </property>
+    </class>
+</hibernate-mapping>

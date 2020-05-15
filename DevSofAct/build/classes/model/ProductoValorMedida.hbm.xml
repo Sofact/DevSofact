@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-abr-2018 8:40:56 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="model.ProductoValorMedida" table="PRODUCTOVALORMEDIDA">
+        <id name="pvmId" type="java.lang.Integer">
+            <column name="PVMID" />
+            <generator class="assigned" />
+        </id>
+        <property name="fechaCreacion" type="java.sql.Timestamp">
+            <column name="FECHACREACION" />
+        </property>
+        <property name="fechaModifica" type="java.sql.Timestamp">
+            <column name="FECHAMODIFICA" />
+        </property>
+        <property name="pvmEstado" type="java.lang.String">
+            <column name="PVMESTADO" />
+        </property>
+        <property name="pvmValor" type="double">
+            <column name="PVMVALOR" />
+        </property>
+        <property name="tpcId" type="java.lang.Integer">
+            <column name="TPCID" />
+        </property>
+        <property name="uepId" type="java.lang.Integer">
+            <column name="UEPID" />
+        </property>
+        <property name="userModifica" type="java.lang.Integer">
+            <column name="USERMODIFICA" />
+        </property>
+        <many-to-one name="producto" class="model.Producto" fetch="join">
+            <column name="PRODUCTO" />
+        </many-to-one>
+        <many-to-one name="unidadMedida" class="model.UnidadMedida" fetch="join">
+            <column name="UNIDADMEDIDA" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

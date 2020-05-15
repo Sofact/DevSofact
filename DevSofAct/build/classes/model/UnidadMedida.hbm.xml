@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-abr-2018 8:40:56 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="model.UnidadMedida" table="UNIDADMEDIDA">
+        <id name="uepId" type="java.lang.Integer">
+            <column name="UEPID" />
+            <generator class="assigned" />
+        </id>
+        <property name="unmId" type="java.lang.Integer">
+            <column name="UNMID" />
+        </property>
+        <property name="fechaCreacion" type="java.sql.Timestamp">
+            <column name="FECHACREACION" />
+        </property>
+        <property name="fechaModifica" type="java.sql.Timestamp">
+            <column name="FECHAMODIFICA" />
+        </property>
+        <property name="unmDescripcion" type="java.lang.String">
+            <column name="UNMDESCRIPCION" />
+        </property>
+        <property name="unmEstado" type="java.lang.String">
+            <column name="UNMESTADO" />
+        </property>
+        <property name="unmRelacion" type="java.lang.String">
+            <column name="UNMRELACION" />
+        </property>
+        <property name="userModifica" type="java.lang.Integer">
+            <column name="USERMODIFICA" />
+        </property>
+        <list name="productoValorMedidas" inverse="false" table="PRODUCTOVALORMEDIDA" lazy="true">
+            <key>
+                <column name="UEPID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="model.ProductoValorMedida" />
+        </list>
+    </class>
+</hibernate-mapping>

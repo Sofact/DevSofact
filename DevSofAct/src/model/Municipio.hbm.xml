@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-abr-2018 8:40:56 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="model.Municipio" table="MUNICIPIO">
+        <id name="depId" type="int">
+            <column name="DEPID" />
+            <generator class="assigned" />
+        </id>
+        <property name="muniId" type="int">
+            <column name="MUNIID" />
+        </property>
+        <property name="muniDescripcion" type="java.lang.String">
+            <column name="MUNIDESCRIPCION" />
+        </property>
+        <property name="muniCodigo" type="java.lang.String">
+            <column name="MUNICODIGO" />
+        </property>
+        <property name="muniEstado" type="char">
+            <column name="MUNIESTADO" />
+        </property>
+        <property name="uepId" type="int">
+            <column name="UEPID" />
+        </property>
+        <property name="fechaCreacion" type="java.util.Date">
+            <column name="FECHACREACION" />
+        </property>
+        <property name="userModfica" type="java.lang.Integer">
+            <column name="USERMODFICA" />
+        </property>
+        <property name="fechaModifica" type="java.util.Date">
+            <column name="FECHAMODIFICA" />
+        </property>
+    </class>
+</hibernate-mapping>

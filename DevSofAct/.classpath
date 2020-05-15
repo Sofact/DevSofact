@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry including="**/*.java" kind="src" output="target/classes" path="src">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+			<attribute name="owner.project.facets" value="jpt.jpa"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="oracle.eclipse.tools.glassfish.lib.system">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/com.fasterxml.jackson.core.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/com.fasterxml.jackson.databind.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jasperreports-6.5.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jasperreports-fonts-6.5.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jasperreports-functions-6.5.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jasperreports-javaflow-6.5.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-digester-2.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-collections-3.2.1-1.0.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/joda-time-2.9.9.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-beanutils-1.9.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jdt-compiler-3.1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/iText-2.1.7.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.json.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/barcode4j-2.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/batik-1.9.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/zxing-1.7-javase.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/zxing-2.0-core.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/zxing-2.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.jws-3.1.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/wsdl4j-1.6.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/neethi-3.0.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/xmlschema-core-2.2.3.jar"/>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

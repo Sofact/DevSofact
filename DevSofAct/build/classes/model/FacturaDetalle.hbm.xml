@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-abr-2018 8:40:56 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="model.FacturaDetalle" table="FACTURADETALLE">
+        <id name="facId" type="int">
+            <column name="FACID" />
+            <generator class="assigned" />
+        </id>
+        <property name="fadId" type="int">
+            <column name="FADID" />
+        </property>
+        <property name="fadCantidad" type="int">
+            <column name="FADCANTIDAD" />
+        </property>
+        <property name="proId" type="int">
+            <column name="PROID" />
+        </property>
+        <property name="pvmId" type="int">
+            <column name="PVMID" />
+        </property>
+    </class>
+</hibernate-mapping>

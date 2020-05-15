@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-abr-2018 8:40:56 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="model.Marca" table="MARCA">
+        <id name="marId" type="java.lang.Integer">
+            <column name="MARID" />
+            <generator class="assigned" />
+        </id>
+        <property name="fechaCreacion" type="java.sql.Timestamp">
+            <column name="FECHACREACION" />
+        </property>
+        <property name="fechaModifica" type="java.sql.Timestamp">
+            <column name="FECHAMODIFICA" />
+        </property>
+        <property name="marDescripcion" type="java.lang.String">
+            <column name="MARDESCRIPCION" />
+        </property>
+        <property name="marEstado" type="java.lang.String">
+            <column name="MARESTADO" />
+        </property>
+        <property name="uepId" type="java.lang.Integer">
+            <column name="UEPID" />
+        </property>
+        <property name="userModifica" type="java.lang.Integer">
+            <column name="USERMODIFICA" />
+        </property>
+        <list name="productos" inverse="false" table="PRODUCTO" lazy="true">
+            <key>
+                <column name="MARID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="model.Producto" />
+        </list>
+    </class>
+</hibernate-mapping>

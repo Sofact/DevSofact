@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-abr-2018 16:31:38 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="model.Factura" table="FACTURA">
+        <id name="cliId" type="int">
+            <column name="CLIID" />
+            <generator class="assigned" />
+        </id>
+        <property name="facId" type="int">
+            <column name="FACID" />
+        </property>
+        <property name="facNumFactura" type="java.lang.String">
+            <column name="FACNUMFACTURA" />
+        </property>
+        <property name="facFechaFactura" type="java.sql.Timestamp">
+            <column name="FACFECHAFACTURA" />
+        </property>
+        <property name="facFecaPago" type="java.util.Date">
+            <column name="FACFECAPAGO" />
+        </property>
+        <property name="refId" type="int">
+            <column name="REFID" />
+        </property>
+        <property name="uepId" type="int">
+            <column name="UEPID" />
+        </property>
+        <property name="facSubTotal" type="double">
+            <column name="FACSUBTOTAL" />
+        </property>
+        <property name="facTotal" type="double">
+            <column name="FACTOTAL" />
+        </property>
+        <property name="facIva" type="double">
+            <column name="FACIVA" />
+        </property>
+        <property name="facImpConsumo" type="java.lang.Double">
+            <column name="FACIMPCONSUMO" />
+        </property>
+        <property name="fechaCreacion" type="java.util.Date">
+            <column name="FECHACREACION" />
+        </property>
+    </class>
+</hibernate-mapping>

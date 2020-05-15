@@ -1,0 +1,1011 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FacturaMediaCarta" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c8d44567-ba4e-4303-992d-bee374f9d69a">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (3)"/>
+	<property name="com.jaspersoft.studio.unit." value="mm"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="mm"/>
+	<style name="Table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Detalles" uuid="48d4b087-4146-42a7-baa4-ddc82d1e59f3">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (3)"/>
+		<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="651"/>
+		<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="335"/>
+		<parameter name="detalle_fact" class="java.lang.Integer" evaluationTime="Early">
+			<defaultValueExpression><![CDATA[$P{detalle_fact}.intValue()]]></defaultValueExpression>
+		</parameter>
+		<queryString language="SQL">
+			<![CDATA[SELECT df.fad_cantidad,
+	p.pro_referencia,
+	tp.tip_descripcion || ' ' || p.pro_descripcion AS nombre,
+	m.mar_descripcion,
+	um.unm_descripcion,
+	df.fad_valor_unitario,
+	df.fad_subtotal
+FROM sfe.factura f
+	inner join sfe.factura_detalle df ON 
+	 f.fac_id = df.fac_id 
+	inner join sfe.producto_valor_medida pvm ON 
+	 df.pvm_id = pvm.pvm_id 
+	inner join sfe.producto p ON 
+	 pvm.pro_id = p.pro_id 
+	inner join sfe.tipo_producto tp ON 
+	 p.tip_id = tp.tip_id 
+	inner join sfe.marca m ON 
+	 p.mar_id = m.mar_id 
+	inner join sfe.unidad_medida um ON 
+	 pvm.unm_id = um.unm_id 
+	inner join sfe.cliente c ON 
+	 f.cli_id = c.cli_id 
+WHERE 
+	 f.fac_id = $P{detalle_fact}]]>
+		</queryString>
+		<field name="fad_cantidad" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="fad_cantidad"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="factura_detalle"/>
+		</field>
+		<field name="pro_referencia" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="pro_referencia"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+		</field>
+		<field name="nombre" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+		</field>
+		<field name="mar_descripcion" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="mar_descripcion"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="marca"/>
+		</field>
+		<field name="unm_descripcion" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="unm_descripcion"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="unidad_medida"/>
+		</field>
+		<field name="fad_valor_unitario" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.label" value="fad_valor_unitario"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="factura_detalle"/>
+		</field>
+		<field name="fad_subtotal" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.label" value="fad_subtotal"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="factura_detalle"/>
+		</field>
+		<group name="fad_cantidad">
+			<groupExpression><![CDATA[$F{fad_cantidad}]]></groupExpression>
+		</group>
+		<group name="pro_referencia">
+			<groupExpression><![CDATA[$F{pro_referencia}]]></groupExpression>
+		</group>
+		<group name="nombre">
+			<groupExpression><![CDATA[$F{nombre}]]></groupExpression>
+		</group>
+		<group name="mar_descripcion">
+			<groupExpression><![CDATA[$F{mar_descripcion}]]></groupExpression>
+		</group>
+		<group name="unm_descripcion">
+			<groupExpression><![CDATA[$F{unm_descripcion}]]></groupExpression>
+		</group>
+		<group name="fad_valor_unitario">
+			<groupExpression><![CDATA[$F{fad_valor_unitario}]]></groupExpression>
+		</group>
+		<group name="fad_subtotal">
+			<groupExpression><![CDATA[$F{fad_subtotal}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="Factura_id" class="java.lang.Integer" evaluationTime="Early">
+		<defaultValueExpression><![CDATA[$P{Factura_id}.intValue()]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT * , c.cli_nombre ||' '|| coalesce(c.cli_segundo_nombre, '')||' '|| coalesce(c.cli_apellidos, '') as nombre_persona
+FROM sfe.factura f
+	inner join sfe.factura_detalle df ON 
+	 f.fac_id = df.fac_id 
+	 inner join sfe.producto_valor_medida pvm ON 
+	 df.pvm_id = pvm.pvm_id 
+	 inner join sfe.producto p ON 
+	 pvm.pro_id = p.pro_id 
+	inner join sfe.tipo_producto tp ON 
+	 p.tip_id = tp.tip_id 
+	inner join sfe.marca m ON 
+	 p.mar_id = m.mar_id 
+	inner join sfe.unidad_medida um ON 
+	 pvm.unm_id = um.unm_id 
+	inner join sfe.cliente c ON 
+	 f.cli_id = c.cli_id  inner join  sfe.municipio mu
+	 on c.muni_id = mu.muni_id
+WHERE 
+	 f.fac_id =  $P{Factura_id} 
+LIMIT 1]]>
+	</queryString>
+	<field name="fac_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="fac_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura"/>
+	</field>
+	<field name="fac_num_factura" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="fac_num_factura"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura"/>
+	</field>
+	<field name="fac_fecha_factura" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fac_fecha_factura"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura"/>
+	</field>
+	<field name="fac_feca_pago" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="fac_feca_pago"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura"/>
+	</field>
+	<field name="cli_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="cli_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura"/>
+	</field>
+	<field name="ref_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="ref_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura"/>
+	</field>
+	<field name="uep_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="uep_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura"/>
+	</field>
+	<field name="fac_sub_total" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="fac_sub_total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura"/>
+	</field>
+	<field name="fac_total" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="fac_total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura"/>
+	</field>
+	<field name="fac_iva" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="fac_iva"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura"/>
+	</field>
+	<field name="fac_imp_consumo" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="fac_imp_consumo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura"/>
+	</field>
+	<field name="fecha_creacion" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_creacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura"/>
+	</field>
+	<field name="fac_tipo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="fac_tipo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura"/>
+	</field>
+	<field name="fac_observacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="fac_observacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura"/>
+	</field>
+	<field name="fac_nota_numero" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="fac_nota_numero"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura"/>
+	</field>
+	<field name="fac_path" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="fac_path"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura"/>
+	</field>
+	<field name="fac_num_original" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="fac_num_original"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura"/>
+	</field>
+	<field name="fad_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="fad_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura_detalle"/>
+	</field>
+	<field name="fad_cantidad" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="fad_cantidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura_detalle"/>
+	</field>
+	<field name="pro_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="pro_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura_detalle"/>
+	</field>
+	<field name="pvm_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="pvm_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura_detalle"/>
+	</field>
+	<field name="COLUMN_22" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="fac_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura_detalle"/>
+	</field>
+	<field name="fad_descuento" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="fad_descuento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura_detalle"/>
+	</field>
+	<field name="fad_subtotal" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="fad_subtotal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura_detalle"/>
+	</field>
+	<field name="fad_valor_unitario" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="fad_valor_unitario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura_detalle"/>
+	</field>
+	<field name="fad_observacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="fad_observacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="factura_detalle"/>
+	</field>
+	<field name="COLUMN_27" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="pvm_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto_valor_medida"/>
+	</field>
+	<field name="pvm_valor" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="pvm_valor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto_valor_medida"/>
+	</field>
+	<field name="COLUMN_29" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="pro_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto_valor_medida"/>
+	</field>
+	<field name="unm_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="unm_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto_valor_medida"/>
+	</field>
+	<field name="tpc_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="tpc_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto_valor_medida"/>
+	</field>
+	<field name="pvm_estado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pvm_estado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto_valor_medida"/>
+	</field>
+	<field name="COLUMN_33" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="uep_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto_valor_medida"/>
+	</field>
+	<field name="COLUMN_34" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_creacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto_valor_medida"/>
+	</field>
+	<field name="user_modifica" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="user_modifica"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto_valor_medida"/>
+	</field>
+	<field name="fecha_modifica" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_modifica"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto_valor_medida"/>
+	</field>
+	<field name="pvm_cantidad" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="pvm_cantidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto_valor_medida"/>
+	</field>
+	<field name="COLUMN_38" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="pro_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="pro_descripcion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pro_descripcion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="pro_referencia" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pro_referencia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="pro_estado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pro_estado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="tip_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="tip_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="mar_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="mar_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="COLUMN_44" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="uep_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="COLUMN_45" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_creacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="COLUMN_46" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="user_modifica"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="COLUMN_47" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_modifica"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="COLUMN_48" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="tip_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tipo_producto"/>
+	</field>
+	<field name="tip_descripcion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tip_descripcion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tipo_producto"/>
+	</field>
+	<field name="tip_estado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tip_estado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tipo_producto"/>
+	</field>
+	<field name="COLUMN_51" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="uep_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tipo_producto"/>
+	</field>
+	<field name="COLUMN_52" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_creacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tipo_producto"/>
+	</field>
+	<field name="COLUMN_53" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="user_modifica"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tipo_producto"/>
+	</field>
+	<field name="COLUMN_54" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_modifica"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tipo_producto"/>
+	</field>
+	<field name="COLUMN_55" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="mar_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="marca"/>
+	</field>
+	<field name="mar_descripcion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="mar_descripcion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="marca"/>
+	</field>
+	<field name="mar_estado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="mar_estado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="marca"/>
+	</field>
+	<field name="COLUMN_58" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="uep_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="marca"/>
+	</field>
+	<field name="COLUMN_59" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_creacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="marca"/>
+	</field>
+	<field name="COLUMN_60" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="user_modifica"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="marca"/>
+	</field>
+	<field name="COLUMN_61" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_modifica"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="marca"/>
+	</field>
+	<field name="COLUMN_62" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="unm_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="unidad_medida"/>
+	</field>
+	<field name="unm_descripcion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="unm_descripcion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="unidad_medida"/>
+	</field>
+	<field name="unm_relacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="unm_relacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="unidad_medida"/>
+	</field>
+	<field name="unm_estado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="unm_estado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="unidad_medida"/>
+	</field>
+	<field name="COLUMN_66" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="uep_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="unidad_medida"/>
+	</field>
+	<field name="COLUMN_67" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_creacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="unidad_medida"/>
+	</field>
+	<field name="COLUMN_68" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="user_modifica"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="unidad_medida"/>
+	</field>
+	<field name="COLUMN_69" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_modifica"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="unidad_medida"/>
+	</field>
+	<field name="COLUMN_70" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="cli_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="cli_nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cli_nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="cli_segundo_nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cli_segundo_nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="cli_apellidos" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cli_apellidos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="cli_tipo_ident" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="cli_tipo_ident"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="cli_num_ident" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cli_num_ident"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="cli_email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cli_email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="cli_telefono" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cli_telefono"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="cli_celular" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cli_celular"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="cli_direccion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cli_direccion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="muni_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="muni_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="COLUMN_81" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="tpc_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="COLUMN_82" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="uep_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="COLUMN_83" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_creacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="COLUMN_84" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="user_modifica"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="fecha_modificacion" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_modificacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="COLUMN_86" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="muni_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="municipio"/>
+	</field>
+	<field name="muni_descripcion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="muni_descripcion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="municipio"/>
+	</field>
+	<field name="muni_codigo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="muni_codigo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="municipio"/>
+	</field>
+	<field name="dep_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="dep_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="municipio"/>
+	</field>
+	<field name="muni_estado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="muni_estado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="municipio"/>
+	</field>
+	<field name="COLUMN_91" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="uep_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="municipio"/>
+	</field>
+	<field name="COLUMN_92" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_creacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="municipio"/>
+	</field>
+	<field name="user_modfica" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="user_modfica"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="municipio"/>
+	</field>
+	<field name="COLUMN_94" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_modifica"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="municipio"/>
+	</field>
+	<field name="nombre_persona" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombre_persona"/>
+	</field>
+	<group name="fac_num_factura">
+		<groupExpression><![CDATA[$F{fac_num_factura}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="121" splitType="Stretch">
+			<staticText>
+				<reportElement x="395" y="29" width="163" height="21" uuid="0dfb7b6f-04ca-482a-a04b-03cf6e93eacd"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOTA DEBITO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="4" width="163" height="16" uuid="7ca3f08b-fac3-49c6-924e-4a00a2dafa1f"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="8"/>
+				</textElement>
+				<text><![CDATA[AUTORIZACION NUMERACIÓN DE FACTURACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="396" y="14" width="163" height="16" uuid="eb3f4594-bf38-45fb-977f-be6f40542a98"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="8"/>
+				</textElement>
+				<text><![CDATA[No 1882008292481 DEL 28 DE DICIEMBRE DE 2017]]></text>
+			</staticText>
+			<rectangle radius="6">
+				<reportElement stretchType="RelativeToTallestObject" x="398" y="42" width="161" height="18" uuid="c6bdc794-144f-44bc-9322-307095fe2ba5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="393" y="22" width="163" height="16" uuid="74aafc59-97cc-4228-ac95-383231c7f453"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Narrow" size="8"/>
+				</textElement>
+				<text><![CDATA[DE LA No 1 A LA No 10.000]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="398" y="45" width="163" height="20" uuid="a85bf1d8-07bc-4f2f-95a4-08a5b4a91c13"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fac_num_original}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="15" y="69" width="73" height="15" uuid="cbc770bf-0abb-4ce8-8e3c-cb4760ace956"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha factura:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="88" y="69" width="170" height="15" uuid="082331d3-558d-40f6-a917-4054abfe6da0"/>
+				<textFieldExpression><![CDATA[$F{fac_fecha_factura}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="288" y="69" width="100" height="15" uuid="79aa9de4-3012-42c2-8452-4318a053d1a4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Vencimiento:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="388" y="69" width="170" height="15" uuid="0c2f109a-b57b-4725-9231-0d36af2d7644"/>
+				<textFieldExpression><![CDATA[$F{fac_feca_pago}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="9" y="64" width="551" height="1" uuid="4ceb000c-0b1d-42fc-9c07-d1126de66bf4"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineColor="#0A55F7"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="15" y="81" width="73" height="20" uuid="a369ba4a-2f3c-4f9d-ad27-c774e18020f6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Señor(es):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="80" width="100" height="17" uuid="f5017176-8034-4ed9-be3a-65502d809b43"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NIT:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="88" y="81" width="170" height="20" uuid="221f4937-d062-4497-8d81-12d4878e29ec"/>
+				<textFieldExpression><![CDATA[$F{nombre_persona}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="388" y="81" width="170" height="20" uuid="ead0244a-0f9b-42b9-9a7f-4b99d362977e"/>
+				<textFieldExpression><![CDATA[$F{cli_num_ident}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="15" y="92" width="73" height="18" uuid="71d221f6-014f-4d9f-b5f2-144ea5f138e8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Direccion:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="92" width="100" height="18" uuid="e8a3aebe-99aa-4aa0-8186-ecef2b6d08f7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefono:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="88" y="92" width="170" height="18" uuid="7ba9b59c-3087-4158-bab2-e4c375ad667a"/>
+				<textFieldExpression><![CDATA[$F{cli_direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="388" y="94" width="172" height="13" uuid="c7e64087-c852-4284-82ec-dc36d291cf43"/>
+				<textFieldExpression><![CDATA[$F{cli_telefono}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="15" y="103" width="73" height="17" uuid="ea8dd5c3-e9d4-48b6-a55e-211957f03072"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Municipio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="104" width="100" height="13" uuid="50634989-cb4d-4ea1-af65-d270f5ab65a5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="388" y="106" width="170" height="13" uuid="eb2b68f8-7edb-41d4-b745-862f74c2cccd"/>
+				<textFieldExpression><![CDATA[$F{cli_email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="104" width="170" height="16" uuid="0e27fe16-50e5-4628-8e1f-289b262f875e"/>
+				<textFieldExpression><![CDATA[$F{muni_descripcion}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="9" y="120" width="551" height="1" uuid="3b9125a1-2cc5-4167-acd5-4a1f7d567151"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineColor="#0A55F7"/>
+				</graphicElement>
+			</rectangle>
+			<image>
+				<reportElement x="26" y="4" width="50" height="50" uuid="f0345677-e896-4a6e-adaa-4c784e1a9de4"/>
+				<imageExpression><![CDATA[CONCATENATE($F{fac_path}.toString(),"\\codigoqr.png")]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="463" splitType="Stretch">
+			<rectangle radius="5">
+				<reportElement x="9" y="70" width="552" height="389" uuid="fee89d87-31d0-40e7-9379-0f09d2de8901"/>
+			</rectangle>
+			<componentElement>
+				<reportElement mode="Transparent" x="10" y="80" width="550" height="370" forecolor="#FFFFFF" uuid="f1cb5851-4032-489c-87df-aa320a2b0cb3">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table 1_TD"/>
+					<property name="net.sf.jasperreports.export.headertoolbar.table.name" value=""/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Detalles" uuid="6d0fc1fe-458f-488f-89de-21742649bf8b">
+						<datasetParameter name="detalle_fact">
+							<datasetParameterExpression><![CDATA[$P{Factura_id}.intValue()]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="40" uuid="0d57d037-cb76-4c2f-808d-39988c6bc635">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader style="Table 1_CH" height="20">
+							<staticText>
+								<reportElement x="0" y="0" width="40" height="20" uuid="de140e74-3ecb-42f3-85a9-4fd03ab83ea9"/>
+								<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+									<pen lineWidth="0.0" lineColor="#FFFCFC"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center">
+									<font size="9" isBold="true"/>
+								</textElement>
+								<text><![CDATA[CANT]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="40" height="20" uuid="d951c253-a7ed-4e93-bb12-249bfda07449"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{fad_cantidad}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="60" uuid="eb531b4c-d600-48dd-818c-a832dbd2e5f9">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader style="Table 1_CH" height="20">
+							<staticText>
+								<reportElement x="0" y="0" width="60" height="20" uuid="d9d579e9-dcca-4aa8-80d6-28398ab7f11b"/>
+								<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+									<pen lineWidth="0.0" lineColor="#FFFCFC"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textElement>
+									<font size="9" isBold="true"/>
+								</textElement>
+								<text><![CDATA[REFERENCIA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="60" height="20" uuid="8bb7751d-7c01-4c87-9bce-9b0c0e160863"/>
+								<textElement textAlignment="Left"/>
+								<textFieldExpression><![CDATA[$F{pro_referencia}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="190" uuid="bc3c4061-1812-4308-baac-e05d4131e773">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:columnHeader style="Table 1_CH" height="20">
+							<staticText>
+								<reportElement x="0" y="0" width="190" height="20" uuid="848028db-bfe3-48d4-9fa0-1f0572406d50"/>
+								<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+									<pen lineWidth="0.0" lineColor="#FFFCFC"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textElement>
+									<font size="9" isBold="true"/>
+								</textElement>
+								<text><![CDATA[DESCRIPCION]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="190" height="20" uuid="09e5184e-e7f9-4388-a0d5-760bd4a95a6c"/>
+								<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+									<pen lineWidth="0.0" lineColor="#FFFCFC"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textElement>
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="66" uuid="740196fc-5de8-4d35-ad7b-4fd679e593b1">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:columnHeader style="Table 1_CH" height="20">
+							<staticText>
+								<reportElement x="0" y="0" width="66" height="20" uuid="cd01a040-b053-4b9f-a026-b432f1635f8a"/>
+								<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+									<pen lineWidth="0.0" lineColor="#FFFCFC"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textElement>
+									<font size="9" isBold="true"/>
+								</textElement>
+								<text><![CDATA[MARCA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="66" height="20" uuid="3a79cab7-a97c-4e65-908c-ee9a97565252"/>
+								<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+									<pen lineWidth="0.0" lineColor="#FFFCFC"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textElement>
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{mar_descripcion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="60" uuid="d1eb7103-2fbf-4f71-a193-27a7ea4eb092">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<jr:columnHeader style="Table 1_CH" height="20">
+							<staticText>
+								<reportElement x="0" y="0" width="60" height="20" uuid="b989ba4a-9dd6-4bf9-92c8-7ad4fde65dc1"/>
+								<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+									<pen lineWidth="0.0" lineColor="#FFFCFC"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textElement>
+									<font size="9" isBold="true"/>
+								</textElement>
+								<text><![CDATA[UNIDAD]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="60" height="20" uuid="1c270957-9d43-4d8f-b93c-de8baae5ef5b"/>
+								<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+									<pen lineWidth="0.0" lineColor="#FFFCFC"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textElement>
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{unm_descripcion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="64" uuid="aa9ae643-eb33-456c-bf70-2ca9d6c43e80">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
+						<jr:columnHeader style="Table 1_CH" height="20">
+							<staticText>
+								<reportElement x="0" y="0" width="64" height="20" uuid="3680663d-bbf4-4408-9dba-910eaf058934"/>
+								<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+									<pen lineWidth="0.0" lineColor="#FFFCFC"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textElement>
+									<font size="9" isBold="true"/>
+								</textElement>
+								<text><![CDATA[VALOR UNIT]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="64" height="20" uuid="ded30e1c-96d2-43c8-8234-fcec8777fe9b"/>
+								<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+									<pen lineWidth="0.0" lineColor="#FFFCFC"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Right">
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[new java.text.DecimalFormat("$ #,##0").format($F{fad_valor_unitario})]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="70" uuid="d5cf4085-2aac-4f7b-8043-5f7377957832">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
+						<jr:columnHeader style="Table 1_CH" height="20">
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="20" uuid="150fc588-fc0b-418e-8db5-4ee5d4eea41b"/>
+								<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+									<pen lineWidth="0.0" lineColor="#FFFCFC"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textElement>
+									<font size="9" isBold="true"/>
+								</textElement>
+								<text><![CDATA[VALOR]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="70" height="20" uuid="0c26231e-dd6c-4cc6-b24c-d192c6c852c5"/>
+								<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+									<pen lineWidth="0.0" lineColor="#FFFCFC"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Right">
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[new java.text.DecimalFormat("$ #,##0").format($F{fad_subtotal})]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<rectangle radius="5">
+				<reportElement x="20" y="16" width="531" height="51" uuid="9839f76c-8dde-4b54-ad14-438ae317e491"/>
+			</rectangle>
+			<textField>
+				<reportElement x="30" y="20" width="500" height="47" uuid="a2a2d79b-f29a-43b9-8e1e-dfd4b0e8a415"/>
+				<textFieldExpression><![CDATA[$F{fac_observacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="23" y="3" width="197" height="30" uuid="74e4ecc8-546c-4410-9f0f-dec8d8505c83"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción de la Nota Debito]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<summary>
+		<band height="146" splitType="Stretch">
+			<rectangle radius="5">
+				<reportElement x="400" y="7" width="160" height="91" uuid="6c71a2d9-f73d-4940-ad84-1572d6665018"/>
+			</rectangle>
+			<rectangle radius="5">
+				<reportElement x="9" y="7" width="389" height="92" uuid="5b0a81a0-6180-4c28-978c-137bd4b4f92f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="413" y="16" width="58" height="25" uuid="7721da69-15b3-48af-849c-42f40e14b4b9"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subtotal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="413" y="41" width="58" height="22" uuid="c5e8f559-bf3a-4083-9c34-01a13bc67f6d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IVA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="413" y="63" width="55" height="22" uuid="0a387bbf-0c35-48fb-8a24-052647c00e1d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="471" y="16" width="79" height="24" uuid="f9da42f7-a574-4620-b149-3a2ae1334e41"/>
+				<textFieldExpression><![CDATA[new java.text.DecimalFormat("$ #,##0").format($F{fac_sub_total})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="471" y="41" width="79" height="20" uuid="7f1d0f2b-3e6d-4805-9836-23e7b6546b07"/>
+				<textFieldExpression><![CDATA[new java.text.DecimalFormat("$ #,##0").format($F{fac_iva})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="472" y="63" width="78" height="23" uuid="9ec1e245-f027-402a-b755-3e3f7b9bf8bc"/>
+				<textFieldExpression><![CDATA[new java.text.DecimalFormat("$ #,##0").format($F{fac_total})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="15" y="55" width="373" height="40" uuid="c3b3e8f9-de0c-46c7-9592-1c18efffd207"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Esta Nota Debito se asimila en todos sus efectos legales a un titulo valor según la ley 1231 de julio de 2008. Nos reservamos el derecho de dominio y propuedad sobre las mercancias detalladas. en esta factura hasta tanto no se haya cancelado en su totalidad.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="133" width="249" height="13" uuid="9044bb91-053c-482e-ac41-ccaa82fa5f02"/>
+				<text><![CDATA[RECIBÍ A ENTERA SATISFACCIÓN LA MERCANCÍA.]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="86" y="126" width="390" height="1" uuid="530c3421-e1de-4784-bdf8-664ccf290202"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="15" y="10" width="100" height="30" uuid="9245213f-6324-4cb9-b8ec-77bcd58ade11"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SON:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

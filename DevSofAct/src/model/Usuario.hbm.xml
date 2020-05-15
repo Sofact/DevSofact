@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-abr-2018 8:40:56 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="model.Usuario" table="USUARIO">
+        <id name="uepId" type="int">
+            <column name="UEPID" />
+            <generator class="assigned" />
+        </id>
+        <property name="usuId" type="int">
+            <column name="USUID" />
+        </property>
+        <property name="usuNick" type="java.lang.String">
+            <column name="USUNICK" />
+        </property>
+        <property name="usuNombres" type="java.lang.String">
+            <column name="USUNOMBRES" />
+        </property>
+        <property name="usuApellidos" type="java.lang.String">
+            <column name="USUAPELLIDOS" />
+        </property>
+        <property name="usuTelefono" type="java.lang.String">
+            <column name="USUTELEFONO" />
+        </property>
+        <property name="usuDireccion" type="java.lang.String">
+            <column name="USUDIRECCION" />
+        </property>
+        <property name="usuEmail" type="java.lang.String">
+            <column name="USUEMAIL" />
+        </property>
+        <property name="fechaCreacion" type="java.util.Date">
+            <column name="FECHACREACION" />
+        </property>
+        <property name="userModifica" type="java.lang.Integer">
+            <column name="USERMODIFICA" />
+        </property>
+        <property name="fechaModifica" type="java.util.Date">
+            <column name="FECHAMODIFICA" />
+        </property>
+    </class>
+</hibernate-mapping>

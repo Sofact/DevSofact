@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	
+    <session-factory >
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.password">postgres</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/sofact</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.default_schema">sfe</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.show_sql">true</property>
+        
+        <mapping class="model.Perfil"/>
+        <mapping class="model.Cliente"/>
+        <mapping class="model.Marca"/>
+        <mapping class="model.TipoProducto"/>
+        <mapping class="model.Producto"/>
+        <mapping class="model.ProductoValorMedida"/>
+        <mapping class="model.UnidadMedida"/>
+        <mapping class="model.Factura"/>
+        <mapping class="model.FacturaDetalle"/>
+        <mapping class="model.Departamento"/>
+        <mapping class="model.Municipio"/>
+        <mapping class="model.Empresa"/>
+        <mapping class="model.TipoDocumento"/>
+        <mapping class="model.ParametroDominio"/>
+        <mapping class="model.Users"/>
+        <mapping class="model.ResolucionFacturacion"/>
+        <mapping class="model.ProductoResumenView"/>
+        <mapping class="model.DetalleFacturaResumen"/>
+    </session-factory>
+    
+</hibernate-configuration>
+ 
