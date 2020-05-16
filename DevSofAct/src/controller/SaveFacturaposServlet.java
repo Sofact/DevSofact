@@ -218,7 +218,7 @@ public class SaveFacturaposServlet extends HttpServlet {
 			String fechaFin = convertirFechaString(ref.getFechaCreacion());
 			
 			
-			ImprimirTicket it = new ImprimirTicket(em.getEmpDescripcion(), em.getEmpNit(), ref.getRefDescripcion(), fechaInicio, fechaFin, ref.getRefInicioConsecutivo(), ref.getRefFinConsecutivo(), factura.getFacNumFactura(), items, "ticket", "caissier", fechaActual, "items", formateaValores(formateador.format((factura.getFacSubTotal()))), formateaValores(formateador.format((factura.getFacIva()))), formateaValores(formateador.format((factura.getFacTotal()))), cliente, "change");
+			ImprimirTicket it = new ImprimirTicket(em.getEmpDescripcion(), em.getEmpNit(), ref.getRefDescripcion(), fechaInicio, fechaFin, ref.getRefInicioConsecutivo(), ref.getRefFinConsecutivo(), factura.getFacNumOriginal(), items, "ticket", "caissier", fechaActual, "items", formateaValores(formateador.format((factura.getFacSubTotal()))), formateaValores(formateador.format((factura.getFacIva()))), formateaValores(formateador.format((factura.getFacTotal()))), cliente, "change");
 			it.print();
 			//request.getRequestDispatcher("./admin/FacturaPos.jsp").forward(request, response);
 			
