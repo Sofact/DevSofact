@@ -35,10 +35,33 @@ public class MedidaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		System.out.println("1.0-------");
 		GetData gd = new GetData();
 		int val = Integer.parseInt(request.getParameter("medida"));
 		
-		List<UnidadMedida> medida = gd.getUnidadMedidaByProducto(val);
+		System.out.println("2.0-------");
+		String tipo = request.getParameter("tipo");
+		List<UnidadMedida> medida = null;
+		
+		System.out.println("3.0-------");
+		
+		if(tipo.equals("M")) {
+			 medida = gd.getUnidadMedidaByProductoTipo(val);
+		}
+		
+		if(tipo.equals("A")) {
+			 medida = gd.getUnidadMedidaByProducto(val);
+		}
+		
+		if(tipo.equals("T")) {
+			System.out.println("4.0-------");
+			int val2 = Integer.parseInt(request.getParameter("marca"));
+			System.out.println("5.0-------");
+			 medida = gd.getUnidadMedidaByTipoProducto(val, val2);
+			 System.out.println("6.0-------");
+		}
+		
+		//List<UnidadMedida> medida = gd.getUnidadMedidaByProducto(val);
 		StringBuilder sb= new StringBuilder("");
 		
 		for(UnidadMedida unidad : medida) {
