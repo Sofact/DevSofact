@@ -178,7 +178,7 @@ public class GetData {
 		Query query = sesion.createQuery("SELECT um FROM ProductoValorMedida pvm INNER JOIN pvm.producto p INNER JOIN pvm.unidadMedida um where p.proId =:arg and pvm.pvmEstado = 'A'");
 		query.setParameter("arg", val);
 		
-		List<UnidadMedida> medida = query.getResultList();
+		List<UnidadMedida> medida = query.getResultList(); 
 		return medida;
 	}
 

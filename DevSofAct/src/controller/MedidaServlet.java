@@ -46,7 +46,7 @@ public class MedidaServlet extends HttpServlet {
 		System.out.println("3.0-------");
 		
 		if(tipo.equals("M")) {
-			 medida = gd.getUnidadMedidaByProductoTipo(val);
+			 medida = gd.getUnidadMedidaByProductoTipo(val); 
 		}
 		
 		if(tipo.equals("A")) {

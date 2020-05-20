@@ -221,7 +221,7 @@ $(document).ready(function(){
 			data: params,
 			statusCode: {
 				404: function(){
-					alert("Pagina no encontrada");
+					alert("Pagina no encontrada"); 
 				},
 				500: function(){
 					alert("Error en el servidor" + 'medida='+$('select[name=producto]').val());
